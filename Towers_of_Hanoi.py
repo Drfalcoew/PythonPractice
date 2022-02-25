@@ -22,15 +22,14 @@ for i in range(num_disks, 0, -1):
 num_optimal_moves = pow(2, num_disks) - 1
 print("\nThe fastest you can solve this game is in {0} moves".format(num_optimal_moves))
 
+choices = [stack.name[0] for stack in stacks]
+for i in range(len(stacks)):
+    name = stacks[i].get_name()
+    letter = choices[i]
+    print("Enter {0} for {1}".format(letter, name))
 
 def get_input():
-    choices = [stack.name[0] for stack in stacks]
-    print(choices)
     while True:
-        for i in range(len(stacks)):
-            name = stacks[i].get_name()
-            letter = choices[i]
-            print("Enter {0} for {1}".format(letter, name))
         user_input = input("")
         if user_input in choices:
             for i in range(len(stacks)):
@@ -40,7 +39,7 @@ def get_input():
 
 num_user_moves = 0
 while right_stack.get_size() != num_disks:
-    print("\n\n\n...Current Stacks...")
+    print("\n...Current Stacks...")
     for stack in stacks:
         stack.print_items()
     print()
